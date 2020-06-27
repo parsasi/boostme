@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 const twitterHelpers = require('../helpers/twitterHelpers');
 const analyze = require('../helpers/analyze');
+const googleHelpers = require('../helpers/googleHelpers');
+const google = require('../helpers/google');
 module.exports = () => {
-    router.get('/getFavorites' ,(req,res) => {
+    router.get('/favorites' ,(req,res) => {
         twitterHelpers.getFavorites()
         .then(tweets => res.json(tweets))
         .catch(e => res.json(e))
@@ -34,6 +36,26 @@ module.exports = () => {
             console.log(e)
             res.json(e)
         })
+    })
+
+    router.get('/text/sentiment' , (req,res) => {
+        const text = decodeURI(req.query.text)
+        googleHelpers.analyzeSentiment(text)
+        .then(result => res.json(result))
+        .catch(e => {
+            console.log(e)
+            res.json(e)
+        })    
+    })
+
+    router.get('/text/entities' , (req,res) => {
+        const text = decodeURI(req.query.text)
+        googleHelpers.analyzeEntities(text)
+        .then(result => res.json(result))
+        .catch(e => {
+            console.log(e)
+            res.json(e)
+        })    
     })
     return router
 };
