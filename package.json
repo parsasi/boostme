@@ -1,0 +1,26 @@
+{
+  "name": "boostme",
+  "version": "1.0.0",
+  "description": "Up your twitter game with BoostMe.",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "BoostMe",
+    "Twitter",
+    "Machine",
+    "learning",
+    "Social",
+    "Media",
+    "Branding"
+  ],
+  "author": "Parsasi",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "twitter": "^1.7.1"
+  }
+}
