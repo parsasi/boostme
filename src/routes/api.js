@@ -30,7 +30,7 @@ module.exports = () => {
         const hashtag = req.query.hashtag || ''
         twitterHelpers.getHashtag(hashtag)
         .then(result => {
-            res.json(analyze.calculatePosts(result.statuses))
+            res.json({text : hashtag  , score : analyze.calculatePosts(result.statuses)})
         })
         .catch(e => {
             console.log(e)

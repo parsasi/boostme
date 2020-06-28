@@ -1,6 +1,12 @@
 module.exports = () => {
     const express = require('express')
     const app = express()
+    const cors = require('cors')
+    var corsOptions = {
+      origin: 'http://localhost:3000',
+      optionsSuccessStatus: 200
+    }
+    app.use(cors(corsOptions));
     const apiRouter = require('./routes/api')()
     const bodyParser = require('body-parser')
     const path = require('path')
